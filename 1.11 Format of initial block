@@ -1,0 +1,17 @@
+`timescale 1ns / 1ps
+
+//common uses of initial statements
+module tb();
+
+    reg a = 0;
+    
+    //initial blocks can have single statements
+    initial a = 1;
+    //or multiple with begin/end as {}
+    initial begin
+        a = 1;
+        #10;
+        a = 0;
+    end
+
+endmodule
