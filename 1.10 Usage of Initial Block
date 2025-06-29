@@ -1,0 +1,51 @@
+`timescale 1ns / 1ps
+
+//common uses of initial statements
+module tb();
+
+    reg clk;    //global signal
+    reg rst;    //global signal
+    
+    reg [3:0] temp;
+    
+    //allows us to analyze waveforms or
+    //system task at start of simulation
+    initial begin
+        $dumpfile("dump.vcd");
+        $dumpvars;
+    end
+    
+    //initializing global signals
+    initial begin
+       clk = 1'b0;
+       rst = 1'b0; 
+    end
+    
+    initial begin 
+        rst = 1'b1;
+        #30;
+        rst = 1'b0;
+    end
+    
+    //can assign specific "random" values at start of simulation
+    initial begin
+        temp = 4'b0100;
+        #10;
+        temp = 4'b1100;
+        #10;
+        temp = 4'b0011;
+        #10;
+    end
+    
+    //analyze values on console
+    initial begin
+        $monitor ("Temp:  %0d at timee : %0t", temp, $time);
+    end
+    
+    //forcefully stop at set time
+    initial begin
+        #200
+        $finish();
+    end
+
+endmodule
