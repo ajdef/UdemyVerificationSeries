@@ -1,0 +1,15 @@
+`timescale 1ns / 1ps
+
+//common uses of initial statements
+module tb();
+
+//for test bench, we can ignore sensitivity list
+always statement; //always_comb, always_ff, always_latch
+    
+always begin
+    ...
+    ...
+    ...
+end
+
+endmodule
